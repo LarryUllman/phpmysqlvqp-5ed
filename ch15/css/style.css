@@ -1,0 +1,39 @@
+body {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	margin: 10px;
+}
+
+form {
+	padding: 10px;
+	border: solid 2px #b7ddf2;
+	background: #ebf4fb;
+}
+
+h1 {
+	font-size: 14px;
+	font-weight: bold;
+}
+
+#submit {
+	width: 100px;
+	height: 20px;
+	text-align:center;
+	color:#FFFFFF;
+	font-weight:bold;
+}
+
+input {
+	font-size: 12px;
+	border: solid 1px #aacfe4;
+	width: 50px;
+	margin: 3px;
+}
+
+.error { 
+	color: #FF0000; 
+}
+
+.errorMessage { 
+	font-style: italic; 
+}

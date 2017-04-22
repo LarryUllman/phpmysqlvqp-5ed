@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Widget Cost Calculator</title>
+	<link rel="stylesheet" href="css/style.css" type="text/css" media="screen">
+	<script type="text/javascript" src="js/jquery-1.6.1.min.js" charset="utf-8"></script>
+	<script type="text/javascript" src="js/calculator.js" charset="utf-8"></script>
+</head>
+<body>
+	<!-- Script 15.6 - calculator.html #2 -->
+<h1>Widget Cost Calculator</h1>
+<p id="results"></p>
+<form action="calculator.php" method="post" id="calculator">
+	<p id="quantityP">Quantity: <input type="text" name="quantity" id="quantity"><span class="errorMessage" id="quantityError">Please enter a valid quantity!</span></p>
+	<p id="priceP">Price: <input type="text" name="price" id="price"><span class="errorMessage" id="priceError">Please enter a valid price!</span></p>
+	<p id="taxP">Tax (%): <input type="text" name="tax" id="tax"><span class="errorMessage" id="taxError">Please enter a valid tax!</span></p>
+	<p><input type="submit" name="submit" id="submit" value="Calculate!"></p>
+</form>
+</body>
+</html>
