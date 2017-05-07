@@ -27,7 +27,7 @@ echo '<table border="0" width="90%" cellspacing="3" cellpadding="3" align="cente
 
 // Display all the prints, linked to URLs:
 $r = mysqli_query ($dbc, $q);
-while ($row = mysqli_fetch_array ($r, MYSQLI_ASSOC)) {
+while ($row = mysqli_fetch_array($r, MYSQLI_ASSOC)) {
 
 	// Display each record:
 	echo "\t<tr>

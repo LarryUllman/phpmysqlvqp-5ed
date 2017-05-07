@@ -27,7 +27,7 @@ foreach ($files as $image) {
 		$image_name = urlencode($image);
 
 		// Print the information:
-		echo "<li><a href=\"javascript:create_window('$image_name',$image_size[0],$image_size[1])\">$image</a></li>\n";
+		echo "<em><a href=\"javascript:create_window('$image_name',$image_size[0],$image_size[1])\">$image</a></em>\n";
 
 	} // End of the IF.
 

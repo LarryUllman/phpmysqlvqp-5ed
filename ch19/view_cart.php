@@ -52,7 +52,7 @@ if (!empty($_SESSION['cart'])) {
 
 	// Print each item...
 	$total = 0; // Total cost of the order.
-	while ($row = mysqli_fetch_array ($r, MYSQLI_ASSOC)) {
+	while ($row = mysqli_fetch_array($r, MYSQLI_ASSOC)) {
 
 		// Calculate the total and sub-totals.
 		$subtotal = $_SESSION['cart'][$row['print_id']]['quantity'] * $_SESSION['cart'][$row['print_id']]['price'];

@@ -50,7 +50,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	if (mysqli_num_rows($r) == 1) { // Valid user ID, show the form.
 
 		// Get the user's information:
-		$row = mysqli_fetch_array ($r, MYSQLI_NUM);
+		$row = mysqli_fetch_array($r, MYSQLI_NUM);
 
 		// Display the record being deleted:
 		echo "<h3>Name: $row[0]</h3>

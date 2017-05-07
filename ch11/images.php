@@ -37,7 +37,7 @@ foreach ($files as $image) {
 		$image_name = urlencode($image);
 
 		// Print the information:
-		echo "<li><a href=\"javascript:create_window('$image_name',$image_size[0],$image_size[1])\">$image</a> $file_size ($image_date)</li>\n";
+		echo "<em><a href=\"javascript:create_window('$image_name',$image_size[0],$image_size[1])\">$image</a> $file_size ($image_date)</em>\n";
 
 	} // End of the IF.
 

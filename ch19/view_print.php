@@ -14,7 +14,7 @@ if (isset($_GET['pid']) && filter_var($_GET['pid'], FILTER_VALIDATE_INT, array('
 	if (mysqli_num_rows($r) == 1) { // Good to go!
 
 		// Fetch the information:
-		$row = mysqli_fetch_array ($r, MYSQLI_ASSOC);
+		$row = mysqli_fetch_array($r, MYSQLI_ASSOC);
 
 		// Start the HTML page:
 		$page_title = $row['print_name'];

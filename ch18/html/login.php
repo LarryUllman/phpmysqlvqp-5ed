@@ -32,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		if (@mysqli_num_rows($r) == 1) { // A match was made.
 
 			// Register the values:
-			$_SESSION = mysqli_fetch_array ($r, MYSQLI_ASSOC);
+			$_SESSION = mysqli_fetch_array($r, MYSQLI_ASSOC);
 			mysqli_free_result($r);
 			mysqli_close($dbc);
 

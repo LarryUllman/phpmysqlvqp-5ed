@@ -131,7 +131,7 @@ if ( !empty($errors) && is_array($errors) ) {
 	$q = "SELECT artist_id, CONCAT_WS(' ', first_name, middle_name, last_name) FROM artists ORDER BY last_name, first_name ASC";
 	$r = mysqli_query ($dbc, $q);
 	if (mysqli_num_rows($r) > 0) {
-		while ($row = mysqli_fetch_array ($r, MYSQLI_NUM)) {
+		while ($row = mysqli_fetch_array($r, MYSQLI_NUM)) {
 			echo "<option value=\"$row[0]\"";
 			// Check for stickyness:
 			if (isset($_POST['artist']) && ($_POST['artist'] == $row[0]) ) echo ' selected="selected"';

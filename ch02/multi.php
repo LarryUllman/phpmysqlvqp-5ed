@@ -10,33 +10,33 @@
 
 // Create one array:
 $mexico = array(
-'YU' => 'Yucatan',
-'BC' => 'Baja California',
-'OA' => 'Oaxaca'
+	'YU' => 'Yucatan',
+	'BC' => 'Baja California',
+	'OA' => 'Oaxaca'
 );
 
 // Create another array:
-$us = array (
-'MD' => 'Maryland',
-'IL' => 'Illinois',
-'PA' => 'Pennsylvania',
-'IA' => 'Iowa'
+$us = array(
+	'MD' => 'Maryland',
+	'IL' => 'Illinois',
+	'PA' => 'Pennsylvania',
+	'IA' => 'Iowa'
 );
 
 // Create a third array:
-$canada = array (
-'QC' => 'Quebec',
-'AB' => 'Alberta',
-'NT' => 'Northwest Territories',
-'YT' => 'Yukon',
-'PE' => 'Prince Edward Island'
+$canada = array(
+	'QC' => 'Quebec',
+	'AB' => 'Alberta',
+	'NT' => 'Northwest Territories',
+	'YT' => 'Yukon',
+	'PE' => 'Prince Edward Island'
 );
 
 // Combine the arrays:
 $n_america = array(
-'Mexico' => $mexico,
-'United States' => $us,
-'Canada' => $canada
+	'Mexico' => $mexico,
+	'United States' => $us,
+	'Canada' => $canada
 );
 
 // Loop through the countries:

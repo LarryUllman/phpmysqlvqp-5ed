@@ -60,8 +60,8 @@ if (isset($_REQUEST['gender'])) {
 if ($name && $email && $gender && $comments) {
 
 	echo "<p>Thank you, <strong>$name</strong>, for the following comments:<br>
-	<tt>$comments</tt></p>
-	<p>We will reply to you at <i>$email</i>.</p>\n";
+	<pre>$comments</pre></p>
+	<p>We will reply to you at <em>$email</em>.</p>\n";
 
 	echo $greeting;
 

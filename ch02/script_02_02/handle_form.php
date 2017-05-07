@@ -19,8 +19,8 @@ $_REQUEST['submit']
 
 // Print the submitted information:
 echo "<p>Thank you, <strong>$name</strong>, for the following comments:<br>
-<tt>$comments</tt></p>
-<p>We will reply to you at <i>$email</i>.</p>\n";
+<pre>$comments</pre></p>
+<p>We will reply to you at <em>$email</em>.</p>\n";
 
 ?>
 </body>

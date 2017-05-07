@@ -12,7 +12,7 @@
 // for an HTML form: months, days, years.
 
 // Make the months array:
-$months = array (1 => 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December');
+$months = [1 => 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
 // Make the months pull-down menu:
 echo '<select name="month">';
@@ -30,7 +30,7 @@ echo '</select>';
 
 // Make the years pull-down menu:
 echo '<select name="year">';
-for ($year = 2011; $year <= 2021; $year++) {
+for ($year = 2017; $year <= 2027; $year++) {
 	echo "<option value=\"$year\">$year</option>\n";
 }
 echo '</select>';

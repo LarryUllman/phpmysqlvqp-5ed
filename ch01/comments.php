@@ -8,7 +8,7 @@
 <?php
 
 # Script 1.4 - comments.php
-# Created March 16, 2011
+# Created April 23, 2017
 # Created by Larry E. Ullman
 # This script does nothing much.
 

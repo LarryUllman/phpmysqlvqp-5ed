@@ -12,11 +12,11 @@
 // for an HTML form: months, days, years.
 
 // Make the months array:
-$months = array (1 => 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December');
+$months = [1 => 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
 // Make the days and years arrays:
-$days = range (1, 31);
-$years = range (2011, 2021);
+$days = range(1, 31);
+$years = range(2017, 2027);
 
 // Make the months pull-down menu:
 echo '<select name="month">';

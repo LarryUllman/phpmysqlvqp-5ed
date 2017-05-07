@@ -21,7 +21,7 @@ if (isset($_GET['p']) && is_numeric($_GET['p'])) { // Already been determined.
 	// Count the number of records:
 	$q = "SELECT COUNT(user_id) FROM users";
 	$r = @mysqli_query ($dbc, $q);
-	$row = @mysqli_fetch_array ($r, MYSQLI_NUM);
+	$row = @mysqli_fetch_array($r, MYSQLI_NUM);
 	$records = $row[0];
 
 	// Calculate the number of pages...

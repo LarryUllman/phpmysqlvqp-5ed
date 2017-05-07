@@ -22,7 +22,7 @@ if (isset($_REQUEST['gender'])) {
 // Print the submitted information:
 echo "<p>Thank you, <strong>$name</strong>, for the following comments:<br>
 <tt>$comments</tt></p>
-<p>We will reply to you at <i>$email</i>.</p>\n";
+<p>We will reply to you at <em>$email</em>.</p>\n";
 
 // Print a message based upon the gender value:
 if ($gender == 'M') {
