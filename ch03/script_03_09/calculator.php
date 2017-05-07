@@ -16,7 +16,7 @@ function create_radio($value, $name = 'gallon_price') {
 	// Complete the element:
 	echo "> $value ";
 
-} // End of create_radio() function.
+} // End of create_gallon_radio() function.
 
 $page_title = 'Trip Cost Calculator';
 include('includes/header.html');
@@ -34,12 +34,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		$hours = $_POST['distance']/65;
 
 		// Print the results:
-		echo '<h1>Total Estimated Cost</h1>
-	<p>The total cost of driving ' . $_POST['distance'] . ' miles, averaging ' . $_POST['efficiency'] . ' miles per gallon, and paying an average of $' . $_POST['gallon_price'] . ' per gallon, is $' . number_format ($dollars, 2) . '. If you drive at an average of 65 miles per hour, the trip will take approximately ' . number_format($hours, 2) . ' hours.</p>';
+		echo '<div class="page-header"><h1>Total Estimated Cost</h1></div>
+		<p>The total cost of driving ' . $_POST['distance'] . ' miles, averaging ' . $_POST['efficiency'] . ' miles per gallon, and paying an average of $' . $_POST['gallon_price'] . ' per gallon, is $' . number_format ($dollars, 2) . '. If you drive at an average of 65 miles per hour, the trip will take approximately ' . number_format($hours, 2) . ' hours.</p>';
 
 	} else { // Invalid submitted values.
-		echo '<h1>Error!</h1>
-		<p class="error">Please enter a valid distance, price per gallon, and fuel efficiency.</p>';
+		echo '<div class="page-header"><h1>Error!</h1></div>
+		<p class="text-danger">Please enter a valid distance, price per gallon, and fuel efficiency.</p>';
 	}
 
 } // End of main submission IF.
@@ -47,16 +47,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 // Leave the PHP section and create the HTML form:
 ?>
 
-<h1>Trip Cost Calculator</h1>
+<div class="page-header"><h1>Trip Cost Calculator</h1></div>
 <form action="calculator.php" method="post">
-	<p>Distance (in miles): <input type="text" name="distance" value="<?php if (isset($_POST['distance'])) echo $_POST['distance']; ?>"></p>
-	<p>Ave. Price Per Gallon: <span class="input">
+	<p>Distance (in miles): <input type="number" name="distance" value="<?php if (isset($_POST['distance'])) echo $_POST['distance']; ?>"></p>
+	<p>Ave. Price Per Gallon:
 	<?php
 	create_radio('3.00');
 	create_radio('3.50');
 	create_radio('4.00');
 	?>
-	</span></p>
+	</p>
 	<p>Fuel Efficiency: <select name="efficiency">
 		<option value="10"<?php if (isset($_POST['efficiency']) && ($_POST['efficiency'] == '10')) echo ' selected="selected"'; ?>>Terrible</option>
 		<option value="20"<?php if (isset($_POST['efficiency']) && ($_POST['efficiency'] == '20')) echo ' selected="selected"'; ?>>Decent</option>
