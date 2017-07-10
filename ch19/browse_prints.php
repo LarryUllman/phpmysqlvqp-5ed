@@ -3,9 +3,9 @@
 
 // Set the page title and include the HTML header:
 $page_title = 'Browse the Prints';
-include ('includes/header.html');
+include('includes/header.html');
 
-require ('../mysqli_connect.php');
+require('../mysqli_connect.php');
 
 // Default query for this page:
 $q = "SELECT artists.artist_id, CONCAT_WS(' ', first_name, middle_name, last_name) AS artist, print_name, price, description, print_id FROM artists, prints WHERE artists.artist_id = prints.artist_id ORDER BY artists.last_name ASC, prints.print_name ASC";
@@ -26,7 +26,7 @@ echo '<table border="0" width="90%" cellspacing="3" cellpadding="3" align="cente
 	</tr>';
 
 // Display all the prints, linked to URLs:
-$r = mysqli_query ($dbc, $q);
+$r = mysqli_query($dbc, $q);
 while ($row = mysqli_fetch_array($r, MYSQLI_ASSOC)) {
 
 	// Display each record:
@@ -41,5 +41,5 @@ while ($row = mysqli_fetch_array($r, MYSQLI_ASSOC)) {
 
 echo '</table>';
 mysqli_close($dbc);
-include ('includes/footer.html');
+include('includes/footer.html');
 ?>

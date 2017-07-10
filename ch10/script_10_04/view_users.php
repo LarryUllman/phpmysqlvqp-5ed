@@ -3,7 +3,7 @@
 // This new version paginates the query results.
 
 $page_title = 'View the Current Users';
-include ('includes/header.html');
+include('includes/header.html');
 echo '<h1>Registered Users</h1>';
 
 require_once ('../mysqli_connect.php');
@@ -20,7 +20,7 @@ if (isset($_GET['p']) && is_numeric($_GET['p'])) { // Already been determined.
 
 	// Count the number of records:
 	$q = "SELECT COUNT(user_id) FROM users";
-	$r = @mysqli_query ($dbc, $q);
+	$r = @mysqli_query($dbc, $q);
 	$row = @mysqli_fetch_array($r, MYSQLI_NUM);
 	$records = $row[0];
 
@@ -42,17 +42,20 @@ if (isset($_GET['s']) && is_numeric($_GET['s'])) {
 
 // Define the query:
 $q = "SELECT last_name, first_name, DATE_FORMAT(registration_date, '%M %d, %Y') AS dr, user_id FROM users ORDER BY registration_date ASC LIMIT $start, $display";
-$r = @mysqli_query ($dbc, $q);
+$r = @mysqli_query($dbc, $q);
 
 // Table header:
-echo '<table align="center" cellspacing="0" cellpadding="5" width="75%">
+echo '<table width="60%">
+<thead>
 <tr>
-	<td align="left"><strong>Edit</strong></td>
-	<td align="left"><strong>Delete</strong></td>
-	<td align="left"><strong>Last Name</strong></td>
-	<td align="left"><strong>First Name</strong></td>
-	<td align="left"><strong>Date Registered</strong></td>
+	<th align="left"><strong>Edit</strong></th>
+	<th align="left"><strong>Delete</strong></th>
+	<th align="left"><strong>Last Name</strong></th>
+	<th align="left"><strong>First Name</strong></th>
+	<th align="left"><strong>Date Registered</strong></th>
 </tr>
+</thead>
+<tbody>
 ';
 
 // Fetch and print all the records....
@@ -74,8 +77,8 @@ while ($row = mysqli_fetch_array($r, MYSQLI_ASSOC)) {
 
 } // End of WHILE loop.
 
-echo '</table>';
-mysqli_free_result ($r);
+echo '</tbody></table>';
+mysqli_free_result($r);
 mysqli_close($dbc);
 
 // Make the links to other pages, if necessary.
@@ -110,5 +113,5 @@ if ($pages > 1) {
 
 } // End of links section.
 
-include ('includes/footer.html');
+include('includes/footer.html');
 ?>

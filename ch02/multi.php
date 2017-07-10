@@ -9,35 +9,35 @@
 <?php # Script 2.7 - multi.php
 
 // Create one array:
-$mexico = array(
+$mexico = [
 	'YU' => 'Yucatan',
 	'BC' => 'Baja California',
 	'OA' => 'Oaxaca'
-);
+];
 
 // Create another array:
-$us = array(
+$us = [
 	'MD' => 'Maryland',
 	'IL' => 'Illinois',
 	'PA' => 'Pennsylvania',
 	'IA' => 'Iowa'
-);
+];
 
 // Create a third array:
-$canada = array(
+$canada = [
 	'QC' => 'Quebec',
 	'AB' => 'Alberta',
 	'NT' => 'Northwest Territories',
 	'YT' => 'Yukon',
 	'PE' => 'Prince Edward Island'
-);
+];
 
 // Combine the arrays:
-$n_america = array(
+$n_america = [
 	'Mexico' => $mexico,
 	'United States' => $us,
 	'Canada' => $canada
-);
+];
 
 // Loop through the countries:
 foreach ($n_america as $country => $list) {

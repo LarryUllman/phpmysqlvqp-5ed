@@ -8,9 +8,9 @@ if (isset($_GET['pid']) && filter_var($_GET['pid'], FILTER_VALIDATE_INT, array('
 	$pid = $_GET['pid'];
 
 	// Get the print info:
-	require ('../mysqli_connect.php'); // Connect to the database.
+	require('../mysqli_connect.php'); // Connect to the database.
 	$q = "SELECT CONCAT_WS(' ', first_name, middle_name, last_name) AS artist, print_name, price, description, size, image_name FROM artists, prints WHERE artists.artist_id=prints.artist_id AND prints.print_id=$pid";
-	$r = mysqli_query ($dbc, $q);
+	$r = mysqli_query($dbc, $q);
 	if (mysqli_num_rows($r) == 1) { // Good to go!
 
 		// Fetch the information:
@@ -18,7 +18,7 @@ if (isset($_GET['pid']) && filter_var($_GET['pid'], FILTER_VALIDATE_INT, array('
 
 		// Start the HTML page:
 		$page_title = $row['print_name'];
-		include ('includes/header.html');
+		include('includes/header.html');
 
 		// Display a header:
 		echo "<div align=\"center\">
@@ -50,10 +50,10 @@ if (isset($_GET['pid']) && filter_var($_GET['pid'], FILTER_VALIDATE_INT, array('
 
 if (!$row) { // Show an error message.
 	$page_title = 'Error';
-	include ('includes/header.html');
+	include('includes/header.html');
 	echo '<div align="center">This page has been accessed in error!</div>';
 }
 
 // Complete the page:
-include ('includes/footer.html');
+include('includes/footer.html');
 ?>

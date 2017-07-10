@@ -55,7 +55,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		echo '<p><em>Thank you for contacting me. I will reply some day.</em></p>';
 
 		// Clear $scrubbed (so that the form's not sticky):
-		$scrubbed = array();
+		$scrubbed = [];
 
 	} else {
 		echo '<p style="font-weight: bold; color: #C00">Please fill out the form completely.</p>';

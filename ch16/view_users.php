@@ -3,12 +3,12 @@
 // This is an OOP version of the script from Chapter 9.
 
 $page_title = 'View the Current Users';
-include ('includes/header.html');
+include('includes/header.html');
 
 // Page header:
 echo '<h1>Registered Users</h1>';
 
-require ('../mysqli_oop_connect.php'); // Connect to the db.
+require('../mysqli_oop_connect.php'); // Connect to the db.
 
 // Make the query:
 $q = "SELECT CONCAT(last_name, ', ', first_name) AS name, DATE_FORMAT(registration_date, '%M %d, %Y') AS dr FROM users ORDER BY registration_date ASC";
@@ -48,5 +48,5 @@ if ($num > 0) { // If it ran OK, display the records.
 $mysqli->close();
 unset($mysqli);
 
-include ('includes/footer.html');
+include('includes/footer.html');
 ?>

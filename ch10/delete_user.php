@@ -3,7 +3,7 @@
 // This page is accessed through view_users.php.
 
 $page_title = 'Delete a User';
-include ('includes/header.html');
+include('includes/header.html');
 echo '<h1>Delete a User</h1>';
 
 // Check for a valid user ID, through GET or POST:
@@ -13,11 +13,11 @@ if ( (isset($_GET['id'])) && (is_numeric($_GET['id'])) ) { // From view_users.ph
 	$id = $_POST['id'];
 } else { // No valid ID, kill the script.
 	echo '<p class="error">This page has been accessed in error.</p>';
-	include ('includes/footer.html');
+	include('includes/footer.html');
 	exit();
 }
 
-require ('../mysqli_connect.php');
+require('../mysqli_connect.php');
 
 // Check if the form has been submitted:
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -26,7 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 		// Make the query:
 		$q = "DELETE FROM users WHERE user_id=$id LIMIT 1";
-		$r = @mysqli_query ($dbc, $q);
+		$r = @mysqli_query($dbc, $q);
 		if (mysqli_affected_rows($dbc) == 1) { // If it ran OK.
 
 			// Print a message:
@@ -45,7 +45,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 	// Retrieve the user's information:
 	$q = "SELECT CONCAT(last_name, ', ', first_name) FROM users WHERE user_id=$id";
-	$r = @mysqli_query ($dbc, $q);
+	$r = @mysqli_query($dbc, $q);
 
 	if (mysqli_num_rows($r) == 1) { // Valid user ID, show the form.
 
@@ -72,5 +72,5 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 mysqli_close($dbc);
 
-include ('includes/footer.html');
+include('includes/footer.html');
 ?>

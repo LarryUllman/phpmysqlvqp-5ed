@@ -3,14 +3,14 @@
 // This is an OOP version of the script from Chapter 9.
 
 $page_title = 'Register';
-include ('includes/header.html');
+include('includes/header.html');
 
 // Check for form submission:
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-	require ('../mysqli_oop_connect.php'); // Connect to the db.
+	require('../mysqli_oop_connect.php'); // Connect to the db.
 
-	$errors = array(); // Initialize an error array.
+	$errors = []; // Initialize an error array.
 
 	// Check for a first name:
 	if (empty($_POST['first_name'])) {
@@ -75,7 +75,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		unset($mysqli);
 
 		// Include the footer and quit the script:
-		include ('includes/footer.html');
+		include('includes/footer.html');
 		exit();
 
 	} else { // Report the errors.
@@ -103,4 +103,4 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	<p>Confirm Password: <input type="password" name="pass2" size="10" maxlength="20" value="<?php if (isset($_POST['pass2'])) echo $_POST['pass2']; ?>" ></p>
 	<p><input type="submit" name="submit" value="Register"></p>
 </form>
-<?php include ('includes/footer.html'); ?>
+<?php include('includes/footer.html'); ?>

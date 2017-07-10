@@ -2,7 +2,7 @@
 // This page displays and handles a search form.
 
 // Include the HTML header:
-include ('includes/header.html');
+include('includes/header.html');
 
 // Show the search form:
 echo '<form action="search.php" method="get" accept-charset="utf-8">
@@ -33,5 +33,5 @@ if (isset($_GET['terms'])) { // Handle the form.
 }
 
 // Include the HTML footer file:
-include ('includes/footer.html');
+include('includes/footer.html');
 ?>

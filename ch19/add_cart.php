@@ -3,7 +3,7 @@
 
 // Set the page title and include the HTML header:
 $page_title = 'Add to Cart';
-include ('includes/header.html');
+include('includes/header.html');
 
 if (isset ($_GET['pid']) && filter_var($_GET['pid'], FILTER_VALIDATE_INT, array('min_range' => 1))  ) { // Check for a print ID.
 	$pid = $_GET['pid'];
@@ -20,9 +20,9 @@ if (isset ($_GET['pid']) && filter_var($_GET['pid'], FILTER_VALIDATE_INT, array(
 	} else { // New product to the cart.
 
 		// Get the print's price from the database:
-		require ('../mysqli_connect.php'); // Connect to the database.
+		require('../mysqli_connect.php'); // Connect to the database.
 		$q = "SELECT price FROM prints WHERE print_id=$pid";
-		$r = mysqli_query ($dbc, $q);
+		$r = mysqli_query($dbc, $q);
 		if (mysqli_num_rows($r) == 1) { // Valid print ID.
 
 			// Fetch the information.
@@ -46,5 +46,5 @@ if (isset ($_GET['pid']) && filter_var($_GET['pid'], FILTER_VALIDATE_INT, array(
 	echo '<div align="center">This page has been accessed in error!</div>';
 }
 
-include ('includes/footer.html');
+include('includes/footer.html');
 ?>

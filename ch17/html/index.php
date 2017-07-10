@@ -2,13 +2,13 @@
 // This is the main page for the site.
 
 // Include the HTML header:
-include ('includes/header.html');
+include('includes/header.html');
 
 // The content on this page is introductory text
-// pulled from the database, based upon the 
+// pulled from the database, based upon the
 // selected language:
-echo $words['intro']; 
+echo $words['intro'];
 
 // Include the HTML footer file:
-include ('includes/footer.html');
+include('includes/footer.html');
 ?>

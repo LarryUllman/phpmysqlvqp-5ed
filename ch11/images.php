@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<title>Images</title>
-	<script type="text/javascript" charset="utf-8" src="js/function.js"></script>
+	<script charset="utf-8" src="js/function.js"></script>
 </head>
 <body>
 <p>Click on an image to view it in a separate window.</p>
@@ -13,7 +13,7 @@
 // This version now shows each image's file size and uploaded date and time.
 
 // Set the default timezone:
-date_default_timezone_set ('America/New_York');
+date_default_timezone_set('America/New_York');
 
 $dir = '../uploads'; // Define the directory to view.
 
@@ -25,10 +25,10 @@ foreach ($files as $image) {
 	if (substr($image, 0, 1) != '.') { // Ignore anything starting with a period.
 
 		// Get the image's size in pixels:
-		$image_size = getimagesize ("$dir/$image");
+		$image_size = getimagesize("$dir/$image");
 
 		// Calculate the image's size in kilobytes:
-		$file_size = round ( (filesize ("$dir/$image")) / 1024) . "kb";
+		$file_size = round( (filesize("$dir/$image")) / 1024) . "kb";
 
 		// Determine the image's upload date and time:
 		$image_date = date("F d, Y H:i:s", filemtime("$dir/$image"));
@@ -37,7 +37,7 @@ foreach ($files as $image) {
 		$image_name = urlencode($image);
 
 		// Print the information:
-		echo "<em><a href=\"javascript:create_window('$image_name',$image_size[0],$image_size[1])\">$image</a> $file_size ($image_date)</em>\n";
+		echo "<li><a href=\"javascript:create_window('$image_name',$image_size[0],$image_size[1])\">$image</a> $file_size ($image_date)</li>\n";
 
 	} // End of the IF.
 

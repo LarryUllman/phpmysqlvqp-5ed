@@ -26,40 +26,40 @@ registration_date DATETIME NOT NULL,
 PRIMARY KEY (user_id)
 );
 
-INSERT INTO users 
-(first_name, last_name, email, pass, registration_date) 
-VALUES ('Larry', 'Ullman', 'email@example.com', SHA1('mypass'), NOW());
+INSERT INTO users
+(first_name, last_name, email, pass, registration_date)
+VALUES ('Larry', 'Ullman', 'email@example.com', SHA2('mypass', 512), NOW());
 
-INSERT INTO users VALUES 
-(NULL, 'Zoe', 'Isabella', 'email2@example.com', SHA1('mojito'), NOW());
-
-INSERT INTO users (first_name, last_name, email, pass, registration_date) VALUES
-('John', 'Lennon', 'john@beatles.com', SHA1('Happin3ss'), NOW()),
-('Paul', 'McCartney', 'paul@beatles.com', SHA1('letITbe'), NOW()),
-('George', 'Harrison', 'george@beatles.com ', SHA1('something'), NOW()),
-('Ringo', 'Starr', 'ringo@beatles.com', SHA1('thisboy'), NOW());
+INSERT INTO users VALUES
+(NULL, 'Zoe', 'Isabella', 'email2@example.com', SHA2('mojito', 512), NOW());
 
 INSERT INTO users (first_name, last_name, email, pass, registration_date) VALUES
-('David', 'Jones', 'davey@monkees.com', SHA1('fasfd'), NOW()),
-('Peter', 'Tork', 'peter@monkees.com', SHA1('warw'), NOW()),
-('Micky', 'Dolenz', 'micky@monkees.com ', SHA1('afsa'), NOW()),
-('Mike', 'Nesmith', 'mike@monkees.com', SHA1('abdfadf'), NOW()),
-('David', 'Sedaris', 'david@authors.com', SHA1('adfwrq'), NOW()),
-('Nick', 'Hornby', 'nick@authors.com', SHA1('jk78'), NOW()),
-('Melissa', 'Bank', 'melissa@authors.com', SHA1('jhk,h'), NOW()),
-('Toni', 'Morrison', 'toni@authors.com', SHA1('hdhd'), NOW()),
-('Jonathan', 'Franzen', 'jonathan@authors.com', SHA1('64654'), NOW()),
-('Don', 'DeLillo', 'don@authors.com', SHA1('asf8'), NOW()),
-('Graham', 'Greene', 'graham@authors.com', SHA1('5684eq'), NOW()),
-('Michael', 'Chabon', 'michael@authors.com', SHA1('srw6'), NOW()),
-('Richard', 'Brautigan', 'richard@authors.com', SHA1('zfs654'), NOW()),
-('Russell', 'Banks', 'russell@authors.com', SHA1('wwr321'), NOW()),
-('Homer', 'Simpson', 'homer@simpson.com', SHA1('5srw651'), NOW()),
-('Marge', 'Simpson', 'marge@simpson.com', SHA1('ljsa'), NOW()),
-('Bart', 'Simpson', 'bart@simpson.com', SHA1('pwqojz'), NOW()),
-('Lisa', 'Simpson', 'lisa@simpson.com', SHA1('uh6'), NOW()),
-('Maggie', 'Simpson', 'maggie@simpson.com', SHA1('plda664'), NOW()),
-('Abe', 'Simpson', 'abe@simpson.com', SHA1('qopkrokr65'), NOW());
+('John', 'Lennon', 'john@beatles.com', SHA2('Happin3ss', 512), NOW()),
+('Paul', 'McCartney', 'paul@beatles.com', SHA2('letITbe', 512), NOW()),
+('George', 'Harrison', 'george@beatles.com ', SHA2('something', 512), NOW()),
+('Ringo', 'Starr', 'ringo@beatles.com', SHA2('thisboy', 512), NOW());
+
+INSERT INTO users (first_name, last_name, email, pass, registration_date) VALUES
+('David', 'Jones', 'davey@monkees.com', SHA2('fasfd', 512), NOW()),
+('Peter', 'Tork', 'peter@monkees.com', SHA2('warw', 512), NOW()),
+('Micky', 'Dolenz', 'micky@monkees.com ', SHA2('afsa', 512), NOW()),
+('Mike', 'Nesmith', 'mike@monkees.com', SHA2('abdfadf', 512), NOW()),
+('David', 'Sedaris', 'david@authors.com', SHA2('adfwrq', 512), NOW()),
+('Nick', 'Hornby', 'nick@authors.com', SHA2('jk78', 512), NOW()),
+('Melissa', 'Bank', 'melissa@authors.com', SHA2('jhk,h', 512), NOW()),
+('Toni', 'Morrison', 'toni@authors.com', SHA2('hdhd', 512), NOW()),
+('Jonathan', 'Franzen', 'jonathan@authors.com', SHA2('64654', 512), NOW()),
+('Don', 'DeLillo', 'don@authors.com', SHA2('asf8', 512), NOW()),
+('Graham', 'Greene', 'graham@authors.com', SHA2('5684eq', 512), NOW()),
+('Michael', 'Chabon', 'michael@authors.com', SHA2('srw6', 512), NOW()),
+('Richard', 'Brautigan', 'richard@authors.com', SHA2('zfs654', 512), NOW()),
+('Russell', 'Banks', 'russell@authors.com', SHA2('wwr321', 512), NOW()),
+('Homer', 'Simpson', 'homer@simpson.com', SHA2('5srw651', 512), NOW()),
+('Marge', 'Simpson', 'marge@simpson.com', SHA2('ljsa', 512), NOW()),
+('Bart', 'Simpson', 'bart@simpson.com', SHA2('pwqojz', 512), NOW()),
+('Lisa', 'Simpson', 'lisa@simpson.com', SHA2('uh6', 512), NOW()),
+('Maggie', 'Simpson', 'maggie@simpson.com', SHA2('plda664', 512), NOW()),
+('Abe', 'Simpson', 'abe@simpson.com', SHA2('qopkrokr65', 512), NOW());
 
 UPDATE users SET email='mike@authors.com' WHERE user_id = 18;
 
@@ -93,12 +93,12 @@ INDEX (parent_id),
 INDEX (forum_id),
 INDEX (user_id),
 INDEX (date_entered)
-) ENGINE = MYISAM;
+) ENGINE = INNODB;
 
 CREATE TABLE users (
 user_id MEDIUMINT UNSIGNED NOT NULL AUTO_INCREMENT,
 username VARCHAR(30) NOT NULL,
-pass CHAR(40) NOT NULL,
+pass CHAR(128) NOT NULL,
 first_name VARCHAR(20) NOT NULL,
 last_name VARCHAR(40) NOT NULL,
 email VARCHAR(60) NOT NULL,
@@ -110,18 +110,18 @@ INDEX login (pass, email)
 
 CHARSET utf8;
 
-INSERT INTO forums (name) VALUES 
-('MySQL'), ('PHP'), ('Sports'), 
-('HTML'), ('CSS'), ('Kindling'); 
+INSERT INTO forums (name) VALUES
+('MySQL'), ('PHP'), ('Sports'),
+('HTML'), ('CSS'), ('Kindling');
 INSERT INTO forums (name) VALUES ('Modern Dance');
 
-INSERT INTO users (username, pass, first_name, last_name, email) VALUES 
-('troutster', SHA1('mypass'), 'Larry', 'Ullman', 'lu@example.com'),
-('funny man', SHA1('monkey'), 'David', 'Brent', 'db@example.com'),
-('Gareth', SHA1('asstmgr'), 'Gareth', 'Keenan', 'gk@example.com');
-INSERT INTO users (username, pass, first_name, last_name, email) VALUES 
-('tim', SHA1( 'psych' ) , 'Tim', 'Canterbury', 'tc@example.com'),
-('finchy', SHA1('jerk'), 'Chris', 'Finch', 'cf@example.com');
+INSERT INTO users (username, pass, first_name, last_name, email) VALUES
+('troutster', SHA2('mypass', 512), 'Larry', 'Ullman', 'lu@example.com'),
+('funny man', SHA2('monkey', 512), 'David', 'Brent', 'db@example.com'),
+('Gareth', SHA2('asstmgr', 512), 'Gareth', 'Keenan', 'gk@example.com');
+INSERT INTO users (username, pass, first_name, last_name, email) VALUES
+('tim', SHA2('psych', 512) , 'Tim', 'Canterbury', 'tc@example.com'),
+('finchy', SHA2('jerk', 512), 'Chris', 'Finch', 'cf@example.com');
 
 SELECT * FROM forums;
 SELECT user_id, username FROM users;
@@ -147,7 +147,28 @@ INSERT INTO messages (parent_id, forum_id, user_id, subject, body, date_entered)
 (17, 2, 3, 'Dynamic HTML using PHP, still not clear', 'Um, how?', UTC_TIMESTAMP()),
 (18, 2, 2, 'Dynamic HTML using PHP, clearer?', 'I think what Larry is trying to say is that you should buy and read his book.', UTC_TIMESTAMP()),
 (15, 6, 4, 'Why? Why? Why?', 'Really, why?', UTC_TIMESTAMP()),
-(20, 6, 1, 'Because', 'Because', UTC_TIMESTAMP());		
+(20, 6, 1, 'Because', 'Because', UTC_TIMESTAMP());
+
+# Demo foreign constraint
+USE test;
+CREATE TABLE parent (
+parent_id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+PRIMARY KEY (parent_id)
+);
+INSERT INTO parent VALUES (1);
+
+CREATE TABLE child (
+child_id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+parent_id INT UNSIGNED NOT NULL,
+PRIMARY KEY (child_id),
+FOREIGN KEY (parent_id) REFERENCES parent (parent_id)
+);
+INSERT INTO child VALUES (1,1);
+DELETE FROM parent WHERE parent_id=1;
+INSERT INTO child
+(child_id, parent_id)
+VALUES (NULL, 12343234);
+
 
 CREATE DATABASE banking CHARACTER SET utf8 COLLATE utf8_general_ci;
 USE banking;
@@ -182,26 +203,30 @@ INDEX (from_account_id),
 INDEX (date_entered),
 FOREIGN KEY (to_account_id) REFERENCES accounts (account_id)
 ON DELETE NO ACTION ON UPDATE NO ACTION,
-FOREIGN KEY (from_account_id) REFERENCES accounts (account_id) 
+FOREIGN KEY (from_account_id) REFERENCES accounts (account_id)
 ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE = INNODB;
 
-INSERT INTO customers (first_name, last_name) 
+INSERT INTO customers (first_name, last_name)
 VALUES ('Sarah', 'Vowell'), ('David', 'Sedaris'), ('Kojo', 'Nnamdi');
-INSERT INTO accounts (customer_id, balance) 
+INSERT INTO accounts (customer_id, balance)
 VALUES (1, 5460.23), (2, 909325.24), (3, 892.00);
-INSERT INTO accounts (customer_id, type, balance) 
+INSERT INTO accounts (customer_id, type, balance)
 VALUES (2, 'Savings', 13546.97);
 
 # ---------
 # Chapter 7
 # ---------
 
+CREATE TABLE preferences (
+receive_emails TINYINT UNSIGNED NOT NULL
+)
+
 ALTER TABLE messages ADD FULLTEXT (body, subject);
 ALTER TABLE customers ADD COLUMN pin VARBINARY(16) NOT NULL;
-ALTER TABLE customers ADD COLUMN nacl CHAR(20) NOT NULL;
+ALTER TABLE customers ADD COLUMN nacl VARBINARY(64) NOT NULL;
 
-UPDATE customers SET nacl = SUBSTRING(MD5(RAND()), -20) WHERE customer_id=1;
+UPDATE customers SET nacl = UNHEX(SHA2(RAND(), 512)) WHERE customer_id=1;
 UPDATE customers SET pin=AES_ENCRYPT(1234, nacl) WHERE customer_id=1;
 
 # ---------
@@ -293,11 +318,11 @@ INSERT INTO languages (lang, lang_eng) VALUES
 ('Nederlands', 'Dutch');
 
 INSERT INTO users (lang_id, time_zone, username, pass, email) VALUES
-(1, 'America/New_York', 'troutster', SHA1('password'), 'email@example.com'),
-(7, 'Europe/Berlin', 'Ute', SHA1('pa24word'), 'email1@example.com'),
-(4, 'Europe/Oslo', 'Silje', SHA1('2kll13'), 'email2@example.com'),
-(2, 'America/Sao_Paulo', 'João', SHA1('fJDLN34'), 'email3@example.com'),
-(1, 'Pacific/Auckland', 'kiwi', SHA1('conchord'), 'kiwi@example.org');
+(1, 'US/Eastern', 'troutster', SHA2('password', 512), 'email@example.com'),
+(7, 'Europe/Berlin', 'Ute', SHA2('pa24word', 512), 'email1@example.com'),
+(4, 'Europe/Oslo', 'Silje', SHA2('2kll13', 512), 'email2@example.com'),
+(2, 'America/Sao_Paulo', 'João', SHA2('fJDLN34', 512), 'email3@example.com'),
+(1, 'Pacific/Auckland', 'kiwi', SHA2('conchord', 512), 'kiwi@example.org');
 
 INSERT INTO words VALUES
 (NULL, 1, 'PHP and MySQL for Dynamic Web Sites: The Forum!', '<p>Welcome to our site....please use the links above...blah, blah, blah.</p>\r\n<p>Welcome to our site....please use the links above...blah, blah, blah.</p>', 'Home', 'Forum Home', 'Language', 'Register', 'Login', 'Logout', 'New Thread', 'Subject', 'Body', 'Submit', 'Posted on', 'Posted by', 'Replies', 'Latest Reply', 'Post a Reply'),

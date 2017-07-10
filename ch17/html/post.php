@@ -1,7 +1,7 @@
 <?php # Script 17.7 - post.php
 // This page handles the message post.
 // It also displays the form if creating a new thread.
-include ('includes/header.html');
+include('includes/header.html');
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') { // Handle the form.
 
@@ -22,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') { // Handle the form.
 	} else { // Thread ID, no need for subject.
 		$subject = TRUE;
 	}
-	
+
 	// Validate the body:
 	if (!empty($_POST['body'])) {
 		$body = htmlentities($_POST['body']);
@@ -30,11 +30,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') { // Handle the form.
 		$body = FALSE;
 		echo '<p>Please enter a body for this post.</p>';
 	}
-	
+
 	if ($subject && $body) { // OK!
-	
+
 		// Add the message to the database...
-		
+
 		if (!$tid) { // Create a new thread.
 			$q = "INSERT INTO threads (lang_id, user_id, subject) VALUES ({$_SESSION['lid']}, {$_SESSION['user_id']}, '" . mysqli_real_escape_string($dbc, $subject) . "')";
 			$r = mysqli_query($dbc, $q);
@@ -44,7 +44,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') { // Handle the form.
 				echo '<p>Your post could not be handled due to a system error.</p>';
 			}
 		} // No $tid.
-		
+
 		if ($tid) { // Add this to the replies table:
 			$q = "INSERT INTO posts (thread_id, user_id, message, posted_on) VALUES ($tid, {$_SESSION['user_id']}, '" . mysqli_real_escape_string($dbc, $body) . "', UTC_TIMESTAMP())";
 			$r = mysqli_query($dbc, $q);
@@ -54,16 +54,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') { // Handle the form.
 				echo '<p>Your post could not be handled due to a system error.</p>';
 			}
 		} // Valid $tid.
-	
+
 	} else { // Include the form:
-		include ('includes/post_form.php');
+		include('includes/post_form.php');
 	}
 
 } else { // Display the form:
-	
-	include ('includes/post_form.php');
+
+	include('includes/post_form.php');
 
 }
 
-include ('includes/footer.html');
+include('includes/footer.html');
 ?>

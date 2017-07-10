@@ -17,10 +17,10 @@ session_start();
 $_SESSION['user_id'] = 1;
 $_SESSION['user_tz'] = 'America/New_York';
 // For logging out:
-//$_SESSION = array();
+//$_SESSION = [];
 
 // Need the database connection:
-require ('../mysqli_connect.php');
+require('../mysqli_connect.php');
 
 // Check for a new language ID...
 // Then store the language ID in the session:

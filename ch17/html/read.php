@@ -1,6 +1,6 @@
 <?php # Script 17.5 - read.php
 // This page shows the messages in a thread.
-include ('includes/header.html');
+include('includes/header.html');
 
 // Check for a thread ID...
 $tid = FALSE;
@@ -44,11 +44,11 @@ if ($tid) { // Get the messages in this thread...
 	} // End of WHILE loop.
 
 	// Show the form to post a message:
-	include ('includes/post_form.php');
+	include('includes/post_form.php');
 
 } else { // Invalid thread ID!
 	echo '<p>This page has been accessed in error.</p>';
 }
 
-include ('includes/footer.html');
+include('includes/footer.html');
 ?>

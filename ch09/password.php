@@ -2,14 +2,14 @@
 // This page lets a user change their password.
 
 $page_title = 'Change Your Password';
-include ('includes/header.html');
+include('includes/header.html');
 
 // Check for form submission:
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-	require ('../mysqli_connect.php'); // Connect to the db.
+	require('../mysqli_connect.php'); // Connect to the db.
 
-	$errors = array(); // Initialize an error array.
+	$errors = []; // Initialize an error array.
 
 	// Check for an email address:
 	if (empty($_POST['email'])) {
@@ -40,7 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	if (empty($errors)) { // If everything's OK.
 
 		// Check that they've entered the right email address/password combination:
-		$q = "SELECT user_id FROM users WHERE (email='$e' AND pass=SHA1('$p') )";
+		$q = "SELECT user_id FROM users WHERE (email='$e' AND pass=SHA2('$p', 512) )";
 		$r = @mysqli_query($dbc, $q);
 		$num = @mysqli_num_rows($r);
 		if ($num == 1) { // Match was made.
@@ -49,7 +49,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			$row = mysqli_fetch_array($r, MYSQLI_NUM);
 
 			// Make the UPDATE query:
-			$q = "UPDATE users SET pass=SHA1('$np') WHERE user_id=$row[0]";
+			$q = "UPDATE users SET pass=SHA2('$np', 512) WHERE user_id=$row[0]";
 			$r = @mysqli_query($dbc, $q);
 
 			if (mysqli_affected_rows($dbc) == 1) { // If it ran OK.
@@ -72,7 +72,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			mysqli_close($dbc); // Close the database connection.
 
 			// Include the footer and quit the script (to not show the form).
-			include ('includes/footer.html');
+			include('includes/footer.html');
 			exit();
 
 		} else { // Invalid email address/password combination.
@@ -97,10 +97,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 ?>
 <h1>Change Your Password</h1>
 <form action="password.php" method="post">
-	<p>Email Address: <input type="text" name="email" size="20" maxlength="60" value="<?php if (isset($_POST['email'])) echo $_POST['email']; ?>" > </p>
+	<p>Email Address: <input type="email" name="email" size="20" maxlength="60" value="<?php if (isset($_POST['email'])) echo $_POST['email']; ?>" > </p>
 	<p>Current Password: <input type="password" name="pass" size="10" maxlength="20" value="<?php if (isset($_POST['pass'])) echo $_POST['pass']; ?>" ></p>
 	<p>New Password: <input type="password" name="pass1" size="10" maxlength="20" value="<?php if (isset($_POST['pass1'])) echo $_POST['pass1']; ?>" ></p>
 	<p>Confirm New Password: <input type="password" name="pass2" size="10" maxlength="20" value="<?php if (isset($_POST['pass2'])) echo $_POST['pass2']; ?>" ></p>
 	<p><input type="submit" name="submit" value="Change Password"></p>
 </form>
-<?php include ('includes/footer.html'); ?>
+<?php include('includes/footer.html'); ?>

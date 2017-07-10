@@ -18,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	echo "<p>The result of checking<br><strong>$pattern</strong><br>against<br>$subject<br>is ";
 
 	// Test:
-	if (preg_match ($pattern, $subject) ) {
+	if (preg_match($pattern, $subject) ) {
 		echo 'TRUE!</p>';
 	} else {
 		echo 'FALSE!</p>';

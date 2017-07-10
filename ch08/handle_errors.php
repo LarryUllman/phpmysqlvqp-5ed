@@ -13,7 +13,7 @@
 define('LIVE', FALSE);
 
 // Create the error handler:
-function my_error_handler ($e_number, $e_message, $e_file, $e_line, $e_vars) {
+function my_error_handler($e_number, $e_message, $e_file, $e_line, $e_vars) {
 
 	// Build the error message:
 	$message = "An error occurred in script '$e_file' on line $e_line: $e_message\n";
@@ -32,7 +32,7 @@ function my_error_handler ($e_number, $e_message, $e_file, $e_line, $e_vars) {
 } // End of my_error_handler() definition.
 
 // Use my error handler:
-set_error_handler ('my_error_handler');
+set_error_handler('my_error_handler');
 
 // Create errors:
 foreach ($var as $v) {}

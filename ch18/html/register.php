@@ -1,13 +1,13 @@
 <?php # Script 18.6 - register.php
 // This is the registration page for the site.
-require ('includes/config.inc.php');
+require('includes/config.inc.php');
 $page_title = 'Register';
-include ('includes/header.html');
+include('includes/header.html');
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') { // Handle the form.
 
 	// Need the database connection:
-	require (MYSQL);
+	require(MYSQL);
 
 	// Trim all the incoming data:
 	$trimmed = array_map('trim', $_POST);
@@ -51,7 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') { // Handle the form.
 
 		// Make sure the email address is available:
 		$q = "SELECT user_id FROM users WHERE email='$e'";
-		$r = mysqli_query ($dbc, $q) or trigger_error("Query: $q\n<br>MySQL Error: " . mysqli_error($dbc));
+		$r = mysqli_query($dbc, $q) or trigger_error("Query: $q\n<br>MySQL Error: " . mysqli_error($dbc));
 
 		if (mysqli_num_rows($r) == 0) { // Available.
 
@@ -60,7 +60,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') { // Handle the form.
 
 			// Add the user to the database:
 			$q = "INSERT INTO users (email, pass, first_name, last_name, active, registration_date) VALUES ('$e', SHA1('$p'), '$fn', '$ln', '$a', NOW() )";
-			$r = mysqli_query ($dbc, $q) or trigger_error("Query: $q\n<br>MySQL Error: " . mysqli_error($dbc));
+			$r = mysqli_query($dbc, $q) or trigger_error("Query: $q\n<br>MySQL Error: " . mysqli_error($dbc));
 
 			if (mysqli_affected_rows($dbc) == 1) { // If it ran OK.
 
@@ -71,7 +71,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') { // Handle the form.
 
 				// Finish the page:
 				echo '<h3>Thank you for registering! A confirmation email has been sent to your address. Please click on the link in that email in order to activate your account.</h3>';
-				include ('includes/footer.html'); // Include the HTML footer.
+				include('includes/footer.html'); // Include the HTML footer.
 				exit(); // Stop the page.
 
 			} else { // If it did not run OK.
@@ -110,4 +110,4 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') { // Handle the form.
 
 </form>
 
-<?php include ('includes/footer.html'); ?>
+<?php include('includes/footer.html'); ?>

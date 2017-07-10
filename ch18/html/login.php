@@ -1,11 +1,11 @@
 <?php # Script 18.8 - login.php
 // This is the login page for the site.
-require ('includes/config.inc.php');
+require('includes/config.inc.php');
 $page_title = 'Login';
-include ('includes/header.html');
+include('includes/header.html');
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-	require (MYSQL);
+	require(MYSQL);
 
 	// Validate the email address:
 	if (!empty($_POST['email'])) {
@@ -27,7 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 		// Query the database:
 		$q = "SELECT user_id, first_name, user_level FROM users WHERE (email='$e' AND pass=SHA1('$p')) AND active IS NULL";
-		$r = mysqli_query ($dbc, $q) or trigger_error("Query: $q\n<br>MySQL Error: " . mysqli_error($dbc));
+		$r = mysqli_query($dbc, $q) or trigger_error("Query: $q\n<br>MySQL Error: " . mysqli_error($dbc));
 
 		if (@mysqli_num_rows($r) == 1) { // A match was made.
 
@@ -65,4 +65,4 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	</fieldset>
 </form>
 
-<?php include ('includes/footer.html'); ?>
+<?php include('includes/footer.html'); ?>

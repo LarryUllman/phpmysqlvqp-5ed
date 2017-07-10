@@ -2,12 +2,12 @@
 // This script performs an INSERT query to add a record to the users table.
 
 $page_title = 'Register';
-include ('includes/header.html');
+include('includes/header.html');
 
 // Check for form submission:
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-	$errors = array(); // Initialize an error array.
+	$errors = []; // Initialize an error array.
 
 	// Check for a first name:
 	if (empty($_POST['first_name'])) {
@@ -45,11 +45,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 		// Register the user in the database...
 
-		require ('../mysqli_connect.php'); // Connect to the db.
+		require('../mysqli_connect.php'); // Connect to the db.
 
 		// Make the query:
-		$q = "INSERT INTO users (first_name, last_name, email, pass, registration_date) VALUES ('$fn', '$ln', '$e', SHA1('$p'), NOW() )";
-		$r = @mysqli_query ($dbc, $q); // Run the query.
+		$q = "INSERT INTO users (first_name, last_name, email, pass, registration_date) VALUES ('$fn', '$ln', '$e', SHA2('$p', 512), NOW() )";
+		$r = @mysqli_query($dbc, $q); // Run the query.
 		if ($r) { // If it ran OK.
 
 			// Print a message:
@@ -70,7 +70,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		mysqli_close($dbc); // Close the database connection.
 
 		// Include the footer and quit the script:
-		include ('includes/footer.html');
+		include('includes/footer.html');
 		exit();
 
 	} else { // Report the errors.
@@ -90,9 +90,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <form action="register.php" method="post">
 	<p>First Name: <input type="text" name="first_name" size="15" maxlength="20" value="<?php if (isset($_POST['first_name'])) echo $_POST['first_name']; ?>"></p>
 	<p>Last Name: <input type="text" name="last_name" size="15" maxlength="40" value="<?php if (isset($_POST['last_name'])) echo $_POST['last_name']; ?>"></p>
-	<p>Email Address: <input type="text" name="email" size="20" maxlength="60" value="<?php if (isset($_POST['email'])) echo $_POST['email']; ?>" > </p>
+	<p>Email Address: <input type="email" name="email" size="20" maxlength="60" value="<?php if (isset($_POST['email'])) echo $_POST['email']; ?>" > </p>
 	<p>Password: <input type="password" name="pass1" size="10" maxlength="20" value="<?php if (isset($_POST['pass1'])) echo $_POST['pass1']; ?>" ></p>
 	<p>Confirm Password: <input type="password" name="pass2" size="10" maxlength="20" value="<?php if (isset($_POST['pass2'])) echo $_POST['pass2']; ?>" ></p>
 	<p><input type="submit" name="submit" value="Register"></p>
 </form>
-<?php include ('includes/footer.html'); ?>
+<?php include('includes/footer.html'); ?>

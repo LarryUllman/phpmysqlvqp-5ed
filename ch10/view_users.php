@@ -3,10 +3,10 @@
 // This new version allows the results to be sorted in different ways.
 
 $page_title = 'View the Current Users';
-include ('includes/header.html');
+include('includes/header.html');
 echo '<h1>Registered Users</h1>';
 
-require ('../mysqli_connect.php');
+require('../mysqli_connect.php');
 
 // Number of records to show per page:
 $display = 10;
@@ -17,7 +17,7 @@ if (isset($_GET['p']) && is_numeric($_GET['p'])) { // Already been determined.
 } else { // Need to determine.
  	// Count the number of records:
 	$q = "SELECT COUNT(user_id) FROM users";
-	$r = @mysqli_query ($dbc, $q);
+	$r = @mysqli_query($dbc, $q);
 	$row = @mysqli_fetch_array($r, MYSQLI_NUM);
 	$records = $row[0];
 	// Calculate the number of pages...
@@ -58,17 +58,20 @@ switch ($sort) {
 
 // Define the query:
 $q = "SELECT last_name, first_name, DATE_FORMAT(registration_date, '%M %d, %Y') AS dr, user_id FROM users ORDER BY $order_by LIMIT $start, $display";
-$r = @mysqli_query ($dbc, $q); // Run the query.
+$r = @mysqli_query($dbc, $q); // Run the query.
 
 // Table header:
-echo '<table align="center" cellspacing="0" cellpadding="5" width="75%">
+echo '<table width="60%">
+<thead>
 <tr>
-	<td align="left"><strong>Edit</strong></td>
-	<td align="left"><strong>Delete</strong></td>
-	<td align="left"><strong><a href="view_users.php?sort=ln">Last Name</a></strong></td>
-	<td align="left"><strong><a href="view_users.php?sort=fn">First Name</a></strong></td>
-	<td align="left"><strong><a href="view_users.php?sort=rd">Date Registered</a></strong></td>
+	<th align="left"><strong>Edit</strong></th>
+	<th align="left"><strong>Delete</strong></th>
+	<th align="left"><strong><a href="view_users.php?sort=ln">Last Name</a></strong></th>
+	<th align="left"><strong><a href="view_users.php?sort=fn">First Name</a></strong></th>
+	<th align="left"><strong><a href="view_users.php?sort=rd">Date Registered</a></strong></th>
 </tr>
+</thead>
+<tbody>
 ';
 
 // Fetch and print all the records....
@@ -85,8 +88,8 @@ while ($row = mysqli_fetch_array($r, MYSQLI_ASSOC)) {
 	';
 } // End of WHILE loop.
 
-echo '</table>';
-mysqli_free_result ($r);
+echo '</tbody></table>';
+mysqli_free_result($r);
 mysqli_close($dbc);
 
 // Make the links to other pages, if necessary.
@@ -118,5 +121,5 @@ if ($pages > 1) {
 
 } // End of links section.
 
-include ('includes/footer.html');
+include('includes/footer.html');
 ?>

@@ -4,7 +4,7 @@
 
 // Set the page title and include the HTML header:
 $page_title = 'View Your Shopping Cart';
-include ('includes/header.html');
+include('includes/header.html');
 
 // Check if the form has been submitted (to update the cart):
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -30,13 +30,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 if (!empty($_SESSION['cart'])) {
 
 	// Retrieve all of the information for the prints in the cart:
-	require ('../mysqli_connect.php'); // Connect to the database.
+	require('../mysqli_connect.php'); // Connect to the database.
 	$q = "SELECT print_id, CONCAT_WS(' ', first_name, middle_name, last_name) AS artist, print_name FROM artists, prints WHERE artists.artist_id = prints.artist_id AND prints.print_id IN (";
 	foreach ($_SESSION['cart'] as $pid => $value) {
 		$q .= $pid . ',';
 	}
 	$q = substr($q, 0, -1) . ') ORDER BY artists.last_name ASC';
-	$r = mysqli_query ($dbc, $q);
+	$r = mysqli_query($dbc, $q);
 
 	// Create a form and a table:
 	echo '<form action="view_cart.php" method="post">
@@ -85,5 +85,5 @@ if (!empty($_SESSION['cart'])) {
 	echo '<p>Your cart is currently empty.</p>';
 }
 
-include ('includes/footer.html');
+include('includes/footer.html');
 ?>

@@ -20,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	echo "<p>The result of replacing<br><strong>$pattern</strong><br>with<br>$replace<br>in<br>$subject<br><br>";
 
 	// Check for a match:
-	if (preg_match ($pattern, $subject) ) {
+	if (preg_match($pattern, $subject) ) {
 		echo preg_replace($pattern, $replace, $subject) . '</p>';
 	} else {
 		echo 'The pattern was not found!</p>';

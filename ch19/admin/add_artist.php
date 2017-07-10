@@ -20,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') { // Handle the form.
 		$ln = trim($_POST['last_name']);
 
 		// Add the artist to the database:
-		require ('../../mysqli_connect.php');
+		require('../../mysqli_connect.php');
 		$q = 'INSERT INTO artists (first_name, middle_name, last_name) VALUES (?, ?, ?)';
 		$stmt = mysqli_prepare($dbc, $q);
 		mysqli_stmt_bind_param($stmt, 'sss', $fn, $mn, $ln);
@@ -29,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') { // Handle the form.
 		// Check the results....
 		if (mysqli_stmt_affected_rows($stmt) == 1) {
 			echo '<p>The artist has been added.</p>';
-			$_POST = array();
+			$_POST = [];
 		} else { // Error!
 			$error = 'The new artist could not be added to the database!';
 		}

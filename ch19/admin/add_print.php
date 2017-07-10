@@ -8,12 +8,12 @@
 <?php # Script 19.2 - add_print.php
 // This page allows the administrator to add a print (product).
 
-require ('../../mysqli_connect.php');
+require('../../mysqli_connect.php');
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') { // Handle the form.
 
 	// Validate the incoming data...
-	$errors = array();
+	$errors = [];
 
 	// Check for a print name:
 	if (!empty($_POST['print_name'])) {
@@ -85,7 +85,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') { // Handle the form.
 			rename ($temp, "../../uploads/$id");
 
 			// Clear $_POST:
-			$_POST = array();
+			$_POST = [];
 
 		} else { // Error!
 			echo '<p style="font-weight: bold; color: #C00">Your submission could not be processed due to a system error.</p>';
@@ -129,7 +129,7 @@ if ( !empty($errors) && is_array($errors) ) {
 	<select name="artist"><option>Select One</option>
 	<?php // Retrieve all the artists and add to the pull-down menu.
 	$q = "SELECT artist_id, CONCAT_WS(' ', first_name, middle_name, last_name) FROM artists ORDER BY last_name, first_name ASC";
-	$r = mysqli_query ($dbc, $q);
+	$r = mysqli_query($dbc, $q);
 	if (mysqli_num_rows($r) > 0) {
 		while ($row = mysqli_fetch_array($r, MYSQLI_NUM)) {
 			echo "<option value=\"$row[0]\"";

@@ -1,8 +1,8 @@
 <?php # Script 18.7 - activate.php
 // This page activates the user's account.
-require ('includes/config.inc.php');
+require('includes/config.inc.php');
 $page_title = 'Activate Your Account';
-include ('includes/header.html');
+include('includes/header.html');
 
 // If $x and $y don't exist or aren't of the proper format, redirect the user:
 if (isset($_GET['x'], $_GET['y'])
@@ -11,9 +11,9 @@ if (isset($_GET['x'], $_GET['y'])
 	) {
 
 	// Update the database...
-	require (MYSQL);
+	require(MYSQL);
 	$q = "UPDATE users SET active=NULL WHERE (email='" . mysqli_real_escape_string($dbc, $_GET['x']) . "' AND active='" . mysqli_real_escape_string($dbc, $_GET['y']) . "') LIMIT 1";
-	$r = mysqli_query ($dbc, $q) or trigger_error("Query: $q\n<br>MySQL Error: " . mysqli_error($dbc));
+	$r = mysqli_query($dbc, $q) or trigger_error("Query: $q\n<br>MySQL Error: " . mysqli_error($dbc));
 
 	// Print a customized message:
 	if (mysqli_affected_rows($dbc) == 1) {
@@ -33,5 +33,5 @@ if (isset($_GET['x'], $_GET['y'])
 
 } // End of main IF-ELSE.
 
-include ('includes/footer.html');
+include('includes/footer.html');
 ?>

@@ -1,6 +1,6 @@
 <?php # Script 17.4 - forum.php
 // This page shows the threads in a forum.
-include ('includes/header.html');
+include('includes/header.html');
 
 // Retrieve all the messages in this forum...
 
@@ -42,13 +42,13 @@ if (mysqli_num_rows($r) > 0) {
 			</tr>';
 
 	}
-	
+
 	echo '</table>'; // Complete the table.
-	
+
 } else {
 	echo '<p>There are currently no messages in this forum.</p>';
 }
 
 // Include the HTML footer file:
-include ('includes/footer.html');
+include('includes/footer.html');
 ?>

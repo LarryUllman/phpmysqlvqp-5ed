@@ -8,27 +8,27 @@ if (isset($_GET['image'])) {
 
 	// Make sure it has an image's extension:
 	$ext = strtolower ( substr ($_GET['image'], -4));
-	
+
 	if (($ext == '.jpg') OR ($ext == 'jpeg') OR ($ext == '.png')) {
 
 		// Full image path:
 		$image = "../uploads/{$_GET['image']}";
 
 		// Check that the image exists and is a file:
-		if (file_exists ($image) && (is_file($image))) {
-			
+		if (file_exists($image) && (is_file($image))) {
+
 			// Set the name as this image:
-			$name = $_GET['image'];	
+			$name = $_GET['image'];
 
 		} // End of file_exists() IF.
 
 	} // End of $ext IF.
-	
+
 } // End of isset($_GET['image']) IF.
 
 // If there was a problem, use the default image:
 if (!$name) {
-	$image = 'images/unavailable.png';	
+	$image = 'images/unavailable.png';
 	$name = 'unavailable.png';
 }
 
@@ -42,4 +42,4 @@ header ("Content-Disposition: inline; filename=\"$name\"\n");
 header ("Content-Length: $fs\n");
 
 // Send the file:
-readfile ($image);
+readfile($image);
