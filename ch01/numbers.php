@@ -17,7 +17,7 @@ $total = $quantity * $price;
 $total = $total + ($total * $taxrate); // Calculate and add the tax.
 
 // Format the total:
-$total = number_format ($total, 2);
+$total = number_format($total, 2);
 
 // Print the results:
 echo '<p>You are purchasing <strong>' . $quantity . '</strong> widget(s) at a cost of <strong>$' . $price . '</strong> each. With tax, the total comes to <strong>$' . $total . '</strong>.</p>';

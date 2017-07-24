@@ -12,7 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	// Validate the data (omitted)!
 
 	// Connect to the database:
-	$dbc = mysqli_connect ('localhost', 'username', 'password', 'forum');
+	$dbc = mysqli_connect('localhost', 'username', 'password', 'forum');
 
 	// Make the query:
 	$q = 'INSERT INTO messages (forum_id, parent_id, user_id, subject, body, date_entered) VALUES (?, ?, ?, ?, ?, NOW())';

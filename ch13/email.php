@@ -20,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	function spam_scrubber($value) {
 
 		// List of very bad values:
-		$very_bad = array('to:', 'cc:', 'bcc:', 'content-type:', 'mime-version:', 'multipart-mixed:', 'content-transfer-encoding:');
+		$very_bad = ['to:', 'cc:', 'bcc:', 'content-type:', 'mime-version:', 'multipart-mixed:', 'content-transfer-encoding:'];
 
 		// If any of the very bad strings are in
 		// the submitted value, return an empty string:
@@ -29,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		}
 
 		// Replace any newline characters with spaces:
-		$value = str_replace(array( "\r", "\n", "%0a", "%0d"), ' ', $value);
+		$value = str_replace(["\r", "\n", "%0a", "%0d"], ' ', $value);
 
 		// Return the value:
 		return trim($value);
@@ -68,7 +68,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <p>Please fill out this form to contact me.</p>
 <form action="email.php" method="post">
 	<p>Name: <input type="text" name="name" size="30" maxlength="60" value="<?php if (isset($scrubbed['name'])) echo $scrubbed['name']; ?>"></p>
-	<p>Email Address: <input type="text" name="email" size="30" maxlength="80" value="<?php if (isset($scrubbed['email'])) echo $scrubbed['email']; ?>"></p>
+	<p>Email Address: <input type="email" name="email" size="30" maxlength="80" value="<?php if (isset($scrubbed['email'])) echo $scrubbed['email']; ?>"></p>
 	<p>Comments: <textarea name="comments" rows="5" cols="30"><?php if (isset($scrubbed['comments'])) echo $scrubbed['comments']; ?></textarea></p>
 	<p><input type="submit" name="submit" value="Send!"></p>
 </form>

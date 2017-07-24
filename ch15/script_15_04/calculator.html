@@ -3,18 +3,18 @@
 <head>
 	<meta charset="utf-8">
 	<title>Widget Cost Calculator</title>
-	<link rel="stylesheet" href="css/style.css" type="text/css" media="screen">
-	<script type="text/javascript" src="js/jquery-1.6.1.min.js" charset="utf-8"></script>
-	<script type="text/javascript" src="js/calculator.js" charset="utf-8"></script>
+	<link rel="stylesheet" href="css/style.css">
+	<script src="js/jquery-3.2.1.min.js"></script>
+	<script src="js/calculator.js"></script>
 </head>
 <body>
 	<!-- Script 15.4 - calculator.html -->
 <h1>Widget Cost Calculator</h1>
 <p id="results"></p>
 <form action="calculator.php" method="post" id="calculator">
-	<p id="quantityP">Quantity: <input type="text" name="quantity" id="quantity"></p>
-	<p id="priceP">Price: <input type="text" name="price" id="price"></p>
-	<p id="taxP">Tax (%): <input type="text" name="tax" id="tax"></p>
+	<p id="quantityP">Quantity: <input type="number" name="quantity" id="quantity" step="1" min="1"></p>
+	<p id="priceP">Price: <input type="number" name="price" id="price" step="0.01" min="0.01"></p>
+	<p id="taxP">Tax (%): <input type="number" name="tax" id="tax" step="0.01" min="0.01"></p>
 	<p><input type="submit" name="submit" id="submit" value="Calculate!"></p>
 </form>
 </body>

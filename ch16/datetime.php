@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<title>DateTime Usage</title>
-	<style type="text/css" media="screen">
+	<style>
 	body {
 		font-family: Verdana, Arial, Helvetica, sans-serif;
 		font-size: 12px;
@@ -22,20 +22,20 @@ $end = new DateTime();
 $end->modify('+1 day');
 
 // Default format for displaying dates:
-$format = 'm/d/Y';
+$format = 'Y-m-d';
 
 // This function validates a provided date string.
 // The function returns an array--month, day, year--if valid.
 function validate_date($date) {
 
 	// Break up the string into its parts:
-	$array = explode('/', $date);
+	$array = explode('-', $date);
 
 	// Return FALSE if there aren't 3 items:
 	if (count($array) != 3) return false;
 
 	// Return FALSE if it's not a valid date:
-	if (!checkdate($array[0], $array[1], $array[2])) return false;
+	if (!checkdate($array[1], $array[2], $array[0])) return false;
 
 	// Return the array:
 	return $array;
@@ -46,7 +46,7 @@ function validate_date($date) {
 if (isset($_POST['start'], $_POST['end'])) {
 
 	// Call the validation function on both dates:
-	if ( (list($sm, $sd, $sy) = validate_date($_POST['start'])) && (list($em, $ed, $ey) = validate_date($_POST['end'])) ) {
+	if ( (list($sy, $sm, $sd) = validate_date($_POST['start'])) && (list($ey, $em, $ed) = validate_date($_POST['end'])) ) {
 
 		// If it's okay, adjust the DateTime objects:
 		$start->setDate($sy, $sm, $sd);
@@ -76,8 +76,8 @@ if (isset($_POST['start'], $_POST['end'])) {
 <h2>Set the Start and End Dates for the Thing</h2>
 <form action="datetime.php" method="post">
 
-	<p><label for="start">Start Date:</label> <input type="text" name="start" value="<?php echo $start->format($format); ?>"> (MM/DD/YYYY)</p>
-	<p><label for="end">End Date:</label> <input type="text" name="end" value="<?php echo $end->format($format); ?>"> (MM/DD/YYYY)</p>
+	<p><label for="start">Start Date:</label> <input type="date" name="start" value="<?php echo $start->format($format); ?>"> (YYYY-MM-DD)</p>
+	<p><label for="end">End Date:</label> <input type="date" name="end" value="<?php echo $end->format($format); ?>"> (YYYY-MM-DD)</p>
 
 	<p><input type="submit" value="Submit"></p>
 </form>

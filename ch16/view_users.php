@@ -1,6 +1,6 @@
-<?php # Script 16.3 - view_users.php
+<?php # Script 16.3 - view_users.php #6
 // This script retrieves all the records from the users table.
-// This is an OOP version of the script from Chapter 9.
+// This is an OOP version of the script from Chapter 10.
 
 $page_title = 'View the Current Users';
 include('includes/header.html');
@@ -23,8 +23,11 @@ if ($num > 0) { // If it ran OK, display the records.
 	echo "<p>There are currently $num registered users.</p>\n";
 
 	// Table header.
-	echo '<table align="center" cellspacing="3" cellpadding="3" width="75%">
+	echo '<table width="60%">
+	<thead>
 	<tr><td align="left"><strong>Name</strong></td><td align="left"><strong>Date Registered</strong></td></tr>
+	</thead>
+	<tbody>
 ';
 
 	// Fetch and print all the records:
@@ -33,7 +36,7 @@ if ($num > 0) { // If it ran OK, display the records.
 		';
 	}
 
-	echo '</table>'; // Close the table.
+	echo '</tbody></table>'; // Close the table.
 
 	$r->free(); // Free up the resources.
 	unset($r);

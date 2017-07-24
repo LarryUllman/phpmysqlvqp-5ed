@@ -47,7 +47,7 @@ if ($tid) { // Get the messages in this thread...
 	include('includes/post_form.php');
 
 } else { // Invalid thread ID!
-	echo '<p>This page has been accessed in error.</p>';
+	echo '<p class="bg-danger">This page has been accessed in error.</p>';
 }
 
 include('includes/footer.html');

@@ -5,7 +5,7 @@
 	<title>Post a Message</title>
 </head>
 <body>
-<?php # Script 16.4 - post_message.php
+<?php # Script 16.4 - post_message.php #2
 // This is an OOP version of the script from Chapter 13.
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {

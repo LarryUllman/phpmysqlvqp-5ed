@@ -64,7 +64,7 @@ if (!empty($_SESSION['cart'])) {
 		<td align=\"left\">{$row['print_name']}</td>
 		<td align=\"right\">\${$_SESSION['cart'][$row['print_id']]['price']}</td>
 		<td align=\"center\"><input type=\"text\" size=\"3\" name=\"qty[{$row['print_id']}]\" value=\"{$_SESSION['cart'][$row['print_id']]['quantity']}\"></td>
-		<td align=\"right\">$" . number_format ($subtotal, 2) . "</td>
+		<td align=\"right\">$" . number_format($subtotal, 2) . "</td>
 		</tr>\n";
 
 	} // End of the WHILE loop.
@@ -74,7 +74,7 @@ if (!empty($_SESSION['cart'])) {
 	// Print the total, close the table, and the form:
 	echo '<tr>
 		<td colspan="4" align="right"><strong>Total:</strong></td>
-		<td align="right">$' . number_format ($total, 2) . '</td>
+		<td align="right">$' . number_format($total, 2) . '</td>
 	</tr>
 	</table>
 	<div align="center"><input type="submit" name="submit" value="Update My Cart"></div>

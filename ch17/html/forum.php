@@ -21,29 +21,32 @@ $r = mysqli_query($dbc, $q);
 if (mysqli_num_rows($r) > 0) {
 
 	// Create a table:
-	echo '<table width="100%" border="0" cellspacing="2" cellpadding="2" align="center">
+	echo '<table class="table table-striped">
+	<thead>
 		<tr>
-			<td align="left" width="50%"><em>' . $words['subject'] . '</em>:</td>
-			<td align="left" width="20%"><em>' . $words['posted_by'] . '</em>:</td>
-			<td align="center" width="10%"><em>' . $words['posted_on'] . '</em>:</td>
-			<td align="center" width="10%"><em>' . $words['replies'] . '</em>:</td>
-			<td align="center" width="10%"><em>' . $words['latest_reply'] . '</em>:</td>
-		</tr>';
+			<th>' . $words['subject'] . '</th>
+			<th>' . $words['posted_by'] . '</th>
+			<th>' . $words['posted_on'] . '</th>
+			<th>' . $words['replies'] . '</th>
+			<th>' . $words['latest_reply'] . '</th>
+		</tr>
+	</thead>
+	<tbody>';
 
 	// Fetch each thread:
 	while ($row = mysqli_fetch_array($r, MYSQLI_ASSOC)) {
 
 		echo '<tr>
-				<td align="left"><a href="read.php?tid=' . $row['thread_id'] . '">' . $row['subject'] . '</a></td>
-				<td align="left">' . $row['username'] . '</td>
-				<td align="center">' . $row['first'] . '</td>
-				<td align="center">' . $row['responses'] . '</td>
-				<td align="center">' . $row['last'] . '</td>
+				<td><a href="read.php?tid=' . $row['thread_id'] . '">' . $row['subject'] . '</a></td>
+				<td>' . $row['username'] . '</td>
+				<td>' . $row['first'] . '</td>
+				<td>' . $row['responses'] . '</td>
+				<td>' . $row['last'] . '</td>
 			</tr>';
 
 	}
 
-	echo '</table>'; // Complete the table.
+	echo '</tbody></table>'; // Complete the table.
 
 } else {
 	echo '<p>There are currently no messages in this forum.</p>';

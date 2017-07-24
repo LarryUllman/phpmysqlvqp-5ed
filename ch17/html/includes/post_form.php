@@ -29,32 +29,32 @@ if (isset($_SESSION['user_id'])) {
 		echo '<h3>' . $words['new_thread'] . '</h3>';
 
 		// Create subject input:
-		echo '<p><em>' . $words['subject'] . '</em>: <input name="subject" type="text" size="60" maxlength="100" ';
+		echo '<div class="form-group"><label for="subject">' . $words['subject'] . '</label> <input name="subject" type="text" class="form-control" size="60" maxlength="100" ';
 
 		// Check for existing value:
 		if (isset($subject)) {
 			echo "value=\"$subject\" ";
 		}
 
-		echo '></p>';
+		echo '></div>';
 
 	} // End of $tid IF.
 
 	// Create the body textarea:
-	echo '<p><em>' . $words['body'] . '</em>: <textarea name="body" rows="10" cols="60">';
+	echo '<div class="form-group"><label for="subject">' . $words['body'] . '</label> <textarea name="body" class="form-control" rows="10" cols="60">';
 
 	if (isset($body)) {
 		echo $body;
 	}
 
-	echo '</textarea></p>';
+	echo '</textarea></div>';
 
 	// Finish the form:
-	echo '<input name="submit" type="submit" value="' . $words['submit'] . '">
+	echo '<input name="submit" type="submit" class="form-control" value="' . $words['submit'] . '">
 	</form>';
 
 } else {
-	echo '<p>You must be logged in to post messages.</p>';
+	echo '<p class="bg-warning">You must be logged in to post messages.</p>';
 }
 
 ?>

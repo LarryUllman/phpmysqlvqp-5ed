@@ -1,6 +1,5 @@
-<?php # Script 16.2 - register.php
+<?php # Script 16.2 - register.php #4
 // This script performs an INSERT query to add a record to the users table.
-// This is an OOP version of the script from Chapter 9.
 
 $page_title = 'Register';
 include('includes/header.html');
@@ -8,7 +7,7 @@ include('includes/header.html');
 // Check for form submission:
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-	require('../mysqli_oop_connect.php'); // Connect to the db.
+	require('mysqli_oop_connect.php'); // Connect to the db.
 
 	$errors = []; // Initialize an error array.
 
@@ -38,7 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		if ($_POST['pass1'] != $_POST['pass2']) {
 			$errors[] = 'Your password did not match the confirmed password.';
 		} else {
-			$p = $mysqli->real_escape_string(trim($_POST['pass1']));
+			$p = password_hash(trim($_POST['pass1']), PASSWORD_DEFAULT);
 		}
 	} else {
 		$errors[] = 'You forgot to enter your password.';
@@ -49,11 +48,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		// Register the user in the database...
 
 		// Make the query:
-		$q = "INSERT INTO users (first_name, last_name, email, pass, registration_date) VALUES ('$fn', '$ln', '$e', SHA1('$p'), NOW() )";
-
-		// Execute the query:
-		$mysqli->query($q);
-
+		$q = "INSERT INTO users (first_name, last_name, email, pass, registration_date) VALUES ('$fn', '$ln', '$e', '$p', NOW() )";
+		$r = @$mysqli->query($q); // Run the query.
 		if ($mysqli->affected_rows == 1) { // If it ran OK.
 
 			// Print a message:
@@ -89,8 +85,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 	} // End of if (empty($errors)) IF.
 
-	$mysqli->close(); // Close the database connection.
-	unset($mysqli);
+		$mysqli->close(); // Close the database connection.
+		unset($mysqli);
 
 } // End of the main Submit conditional.
 ?>
@@ -98,7 +94,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <form action="register.php" method="post">
 	<p>First Name: <input type="text" name="first_name" size="15" maxlength="20" value="<?php if (isset($_POST['first_name'])) echo $_POST['first_name']; ?>"></p>
 	<p>Last Name: <input type="text" name="last_name" size="15" maxlength="40" value="<?php if (isset($_POST['last_name'])) echo $_POST['last_name']; ?>"></p>
-	<p>Email Address: <input type="text" name="email" size="20" maxlength="60" value="<?php if (isset($_POST['email'])) echo $_POST['email']; ?>" > </p>
+	<p>Email Address: <input type="email" name="email" size="20" maxlength="60" value="<?php if (isset($_POST['email'])) echo $_POST['email']; ?>" > </p>
 	<p>Password: <input type="password" name="pass1" size="10" maxlength="20" value="<?php if (isset($_POST['pass1'])) echo $_POST['pass1']; ?>" ></p>
 	<p>Confirm Password: <input type="password" name="pass2" size="10" maxlength="20" value="<?php if (isset($_POST['pass2'])) echo $_POST['pass2']; ?>" ></p>
 	<p><input type="submit" name="submit" value="Register"></p>

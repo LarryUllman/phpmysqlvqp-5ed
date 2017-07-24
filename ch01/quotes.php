@@ -17,7 +17,7 @@ $total = $quantity * $price;
 $total = $total + ($total * $taxrate); // Calculate and add the tax.
 
 // Format the total:
-$total = number_format ($total, 2);
+$total = number_format($total, 2);
 
 // Print the results using double quotation marks:
 echo "<h3>Using double quotation marks:</h3>";
