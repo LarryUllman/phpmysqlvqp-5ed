@@ -19,9 +19,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 	// Check for a new password and match against the confirmed password:
 	$p = FALSE;
-	if (preg_match ('/^(\w){4,20}$/', $_POST['password1']) ) {
+	if (strlen($_POST['password1']) >= 10) {
 		if ($_POST['password1'] == $_POST['password2']) {
-			$p = mysqli_real_escape_string ($dbc, $_POST['password1']);
+			$p = password_hash($_POST['password1'], PASSWORD_DEFAULT);
 		} else {
 			echo '<p class="error">Your password did not match the confirmed password!</p>';
 		}
@@ -32,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	if ($p) { // If everything's OK.
 
 		// Make the query:
-		$q = "UPDATE users SET pass=SHA1('$p') WHERE user_id={$_SESSION['user_id']} LIMIT 1";
+		$q = "UPDATE users SET pass='$p' WHERE user_id={$_SESSION['user_id']} LIMIT 1";
 		$r = mysqli_query($dbc, $q) or trigger_error("Query: $q\n<br>MySQL Error: " . mysqli_error($dbc));
 		if (mysqli_affected_rows($dbc) == 1) { // If it ran OK.
 
@@ -60,8 +60,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <h1>Change Your Password</h1>
 <form action="change_password.php" method="post">
 	<fieldset>
-	<p><strong>New Password:</strong> <input type="password" name="password1" size="20" maxlength="20"> <small>Use only letters, numbers, and the underscore. Must be between 4 and 20 characters long.</small></p>
-	<p><strong>Confirm New Password:</strong> <input type="password" name="password2" size="20" maxlength="20"></p>
+	<p><strong>New Password:</strong> <input type="password" name="password1" size="20"> <small>At least 10 characters long.</small></p>
+	<p><strong>Confirm New Password:</strong> <input type="password" name="password2" size="20"></p>
 	</fieldset>
 	<div align="center"><input type="submit" name="submit" value="Change My Password"></div>
 </form>

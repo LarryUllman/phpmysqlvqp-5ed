@@ -5,10 +5,10 @@
 // and selects the database.
 
 // Set the database access information as constants:
-DEFINE ('DB_USER', 'username');
-DEFINE ('DB_PASSWORD', 'password');
-DEFINE ('DB_HOST', 'localhost');
-DEFINE ('DB_NAME', 'forum2');
+define('DB_USER', 'username');
+define('DB_PASSWORD', 'password');
+define('DB_HOST', 'localhost');
+define('DB_NAME', 'forum2');
 
 // Make the connection:
 $dbc = @mysqli_connect (DB_HOST, DB_USER, DB_PASSWORD, DB_NAME) OR die ('Could not connect to MySQL: ' . mysqli_connect_error() );
