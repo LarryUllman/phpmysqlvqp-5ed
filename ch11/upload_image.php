@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<title>Upload an Image</title>
-	<style type="text/css" title="text/css" media="all">
+	<style>
 	.error {
 		font-weight: bold;
 		color: #C00;
@@ -20,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	if (isset($_FILES['upload'])) {
 
 		// Validate the type. Should be JPEG or PNG.
-		$allowed = ['image/pjpeg', 'image/jpeg', 'image/JPG', 'image/X-PNG', 'image/PNG', 'image/png', 'image/x-png';
+		$allowed = ['image/pjpeg', 'image/jpeg', 'image/JPG', 'image/X-PNG', 'image/PNG', 'image/png', 'image/x-png'];
 		if (in_array($_FILES['upload']['type'], $allowed)) {
 
 			// Move the file over.

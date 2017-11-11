@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>Upload a RTF Document</title>
+	<title>Upload an RTF Document</title>
 </head>
 <body>
 <?php # Script 13.3 - upload_rtf.php

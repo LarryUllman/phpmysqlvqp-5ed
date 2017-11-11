@@ -5,7 +5,7 @@
 	<title>Testing PCRE</title>
 </head>
 <body>
-<?php // Script 14.1 - pcre.php
+<?php # Script 14.1 - pcre.php
 // This script takes a submitted string and checks it against a submitted pattern.
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {

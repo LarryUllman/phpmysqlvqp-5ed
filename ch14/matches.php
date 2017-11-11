@@ -5,7 +5,7 @@
 	<title>Testing PCRE</title>
 </head>
 <body>
-<?php // Script 14.2 - matches.php
+<?php # Script 14.2 - matches.php
 // This script takes a submitted string and checks it against a submitted pattern.
 // This version prints every match made.
 

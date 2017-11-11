@@ -5,7 +5,7 @@
 	<title>Testing PCRE Replace</title>
 </head>
 <body>
-<?php // Script 14.3 - replace.php
+<?php # Script 14.3 - replace.php
 // This script takes a submitted string and checks it against a submitted pattern.
 // This version replaces one value with another.
 

@@ -18,8 +18,8 @@ $_REQUEST['submit']
 */
 
 // Print the submitted information:
-echo "<p>Thank you, <strong>$name</strong>, for the following comments:<br>
-<pre>$comments</pre></p>
+echo "<p>Thank you, <strong>$name</strong>, for the following comments:</p>
+<pre>$comments</pre>
 <p>We will reply to you at <em>$email</em>.</p>\n";
 
 ?>

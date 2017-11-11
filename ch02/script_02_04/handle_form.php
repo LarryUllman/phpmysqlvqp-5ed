@@ -59,8 +59,8 @@ if (isset($_REQUEST['gender'])) {
 // If everything is OK, print the message:
 if ($name && $email && $gender && $comments) {
 
-	echo "<p>Thank you, <strong>$name</strong>, for the following comments:<br>
-	<pre>$comments</pre></p>
+	echo "<p>Thank you, <strong>$name</strong>, for the following comments:</p>
+	<pre>$comments</pre>
 	<p>We will reply to you at <em>$email</em>.</p>\n";
 
 	echo $greeting;

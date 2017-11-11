@@ -22,8 +22,14 @@ if ($num > 0) { // If it ran OK, display the records.
 	echo "<p>There are currently $num registered users.</p>\n";
 
 	// Table header.
-	echo '<table align="center" cellspacing="3" cellpadding="3" width="75%">
-	<tr><td align="left"><strong>Name</strong></td><td align="left"><strong>Date Registered</strong></td></tr>
+	echo '<table width="60%">
+	<thead>
+	<tr>
+		<th align="left">Name</th>
+		<th align="left">Date Registered</th>
+	</tr>
+	</thead>
+	<tbody>
 ';
 
 	// Fetch and print all the records:
@@ -32,7 +38,7 @@ if ($num > 0) { // If it ran OK, display the records.
 		';
 	}
 
-	echo '</table>'; // Close the table.
+	echo '</tbody></table>'; // Close the table.
 
 	mysqli_free_result ($r); // Free up the resources.
 
