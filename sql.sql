@@ -1,4 +1,4 @@
-# SQL Commands from "PHP and MySQL for Dynamic Web Sites: Visual QuickPro Guide (4th Edition)"
+# SQL Commands from "PHP and MySQL for Dynamic Web Sites: Visual QuickPro Guide (5th Edition)"
 # Written by Larry Ullman, Published September 2017
 
 # This file contains the CREATE, INSERT, and ALTER SQL statements used in the book, listed by chapter.
