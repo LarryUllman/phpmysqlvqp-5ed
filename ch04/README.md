@@ -1,0 +1,1 @@
+There are no scripts for this chapter. See the sql.sql file in the root folder for the SQL commands that are run.
