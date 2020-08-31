@@ -31,7 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 		// Create a new, random password:
 		$p = substr(md5(uniqid(rand(), true)), 3, 15);
-		$ph = password_hash($p);
+		$ph = password_hash($p, PASSWORD_DEFAULT);
 
 		// Update the database:
 		$q = "UPDATE users SET pass='$ph' WHERE user_id=$uid LIMIT 1";
