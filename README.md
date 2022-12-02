@@ -27,6 +27,10 @@ Thanks,
 Larry Ullman
 www.LarryUllman.com
 
+SQL not showing in Language Statistics #348 see link below:
+
+https://github.com/github/markup/issues/348
+
 == We're Using GitHub Under Protest ==
 
 This project is currently hosted on GitHub.  This is not ideal; GitHub is a
